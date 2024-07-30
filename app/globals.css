@@ -4,7 +4,7 @@
 
 body {
   color: black;
-  background: white;
+  background: #e2e2e2;
 }
 
 @layer utilities {
