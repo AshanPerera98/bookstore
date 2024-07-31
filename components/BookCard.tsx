@@ -16,7 +16,7 @@ const BookCard = (props: Book) => {
   };
 
   return (
-    <Card maw={360} miw={240} shadow="sm" radius="md" withBorder>
+    <Card maw={360} miw={240} shadow="sm" radius="md">
       <CardSection>
         <Image alt={title} src={image} width={400} height={300} />
       </CardSection>

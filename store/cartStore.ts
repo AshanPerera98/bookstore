@@ -7,8 +7,9 @@ type CartStore = {
 
   addItem: (item: StoredBook) => void;
   removeItem: (id: string) => void;
-  incrementQuanntity: (id: string, value: boolean) => void;
+  incrementQuantity: (id: string, value: boolean) => void;
   checkItemInCart: (id: string) => boolean;
+  getCheckoutDetails: () => { totalItems: number; totalPrice: number };
 };
 
 export const useCartStore = create<CartStore>((set, get) => ({
@@ -29,7 +30,7 @@ export const useCartStore = create<CartStore>((set, get) => ({
     }));
   },
 
-  incrementQuanntity: (id, value) => {
+  incrementQuantity: (id, value) => {
     const newItems = get().items.map((item) => {
       if (item.bookId === id) {
         return {
@@ -45,5 +46,17 @@ export const useCartStore = create<CartStore>((set, get) => ({
 
   checkItemInCart: (id) => {
     return get().items.some((item) => item.bookId === id);
+  },
+
+  getCheckoutDetails: () => {
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    get().items.forEach((item) => {
+      totalItems += item.quantity;
+      totalPrice += item.price * item.quantity;
+    });
+
+    return { totalItems, totalPrice };
   },
 }));

@@ -22,7 +22,7 @@ const BookList = ({ className }: props) => {
 
   return (
     <div
-      className={`${className} grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8`}
+      className={`${className} w-full grid-cols-1 place-items-center grid xl:grid-cols-3 md:grid-cols-2 md:place-items-baseline gap-8`}
     >
       {books.map((book: Book) => {
         return <BookCard key={book.id} {...book} />;
