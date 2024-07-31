@@ -1,9 +1,9 @@
-const categories = [
+export const categories = [
   "All",
   "Fantasy",
   "Adventure",
   "Dystopian",
-  "Science Fiction",
+  "Science-Fiction",
   "Classic",
   "Historical",
   "Literature",
@@ -14,5 +14,3 @@ const categories = [
   "Thriller",
   "Romance",
 ];
-
-export default categories;

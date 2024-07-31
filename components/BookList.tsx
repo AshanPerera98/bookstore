@@ -1,24 +1,20 @@
+"use client";
+
 import BookCard from "@/components/BookCard";
 import { Book } from "@/interfaces/Book";
-
-type apiResponse = {
-  books: Book[];
-  page: number;
-  totalPages: number;
-};
+import { useBookStore } from "@/store/store";
 
 type props = {
   className?: string;
 };
 
-const BookList = async ({ className }: props) => {
-  const response = await fetch(`http://localhost:3000/api/books?length=9`, {
-    next: { revalidate: 300 },
-  });
-  const { books, page, totalPages }: apiResponse = await response.json();
+const BookList = ({ className }: props) => {
+  const { books, page, totalPages } = useBookStore((state) => state);
 
   return (
-    <div className={`${className} grid gap-8 grid-cols-3`}>
+    <div
+      className={`${className} grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8`}
+    >
       {books.map((book: Book) => {
         return <BookCard key={book.id} {...book} />;
       })}

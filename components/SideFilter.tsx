@@ -7,13 +7,34 @@ import {
   Text,
   TextInput,
 } from "@mantine/core";
-import categories from "@/constants/categories";
+import { categories, sortOptions, resultOptions } from "@/constants";
+import { useEffect } from "react";
+import { useBookStore } from "@/store/store";
+import { TCategory, TSort } from "@/types/types";
 
 type props = {
   className?: string;
 };
 
 const SideFilter = ({ className }: props) => {
+  const {
+    setSearch,
+    setCategory,
+    setSort,
+    setFrom,
+    setTo,
+    setCount,
+    fetchBooks,
+  } = useBookStore((state) => state);
+
+  const fetchFilteredBooks = () => {
+    fetchBooks();
+  };
+
+  useEffect(() => {
+    fetchFilteredBooks();
+  }, []);
+
   return (
     <div
       className={`${className} p-6 bg-white rounded-2xl h-min shadow-xl shadow-gray-100`}
@@ -27,20 +48,15 @@ const SideFilter = ({ className }: props) => {
           label="Title or author"
           placeholder="Enter text"
           description="Search books by title or author"
+          onChange={(e) => setSearch(e.target.value)}
         />
 
         <NativeSelect
           mt="md"
           label="Sort order"
-          data={[
-            "Newest to oldest",
-            "Oldest to newest",
-            "Title A to Z",
-            "Title Z to A",
-            "Price low to high",
-            "Price high to low",
-          ]}
+          data={sortOptions}
           description="Sort the results by the order"
+          onChange={(e) => setSort(e.target.value as TSort)}
         />
 
         <NativeSelect
@@ -48,6 +64,7 @@ const SideFilter = ({ className }: props) => {
           label="Category"
           data={categories}
           description="Filter books by category"
+          onChange={(e) => setCategory(e.target.value as TCategory)}
         />
 
         <Text fz="sm" fw={500} mt="md">
@@ -69,13 +86,19 @@ const SideFilter = ({ className }: props) => {
           ]}
           mt={12}
           mb={32}
+          onChange={(e) => {
+            const [from, to] = e;
+            setFrom(from);
+            setTo(to);
+          }}
         />
 
         <NativeSelect
           mt="md"
           label="Results per page"
-          data={["9", "15", "30", "60"]}
+          data={resultOptions}
           description="How many results to show in a page"
+          onChange={(e) => setCount(Number(e.target.value))}
         />
 
         <Button
@@ -84,6 +107,7 @@ const SideFilter = ({ className }: props) => {
           mt={24}
           justify="center"
           fullWidth
+          onClick={fetchFilteredBooks}
         >
           Filter
         </Button>

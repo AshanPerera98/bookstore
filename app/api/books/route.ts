@@ -1,23 +1,54 @@
 import { Book } from "@/interfaces/Book";
 import { NextRequest, NextResponse } from "next/server";
+import { TCategory, TSort } from "@/types/types.js";
 
 import books from "./../../../db/books.js";
 
-type TSort = "A-Z" | "Z-A" | "L-H" | "H-L" | "O-N" | "N-O";
-type TLength = 10 | 20;
-
 export const GET = async (reqest: NextRequest) => {
-  const sort: TSort =
-    (reqest.nextUrl.searchParams.get("sort") as TSort) || "N-O";
+  // Query parameter extranction ----------------------------------------
 
-  const pageLength: TLength =
-    (Number(reqest.nextUrl.searchParams.get("length")) as TLength) || 10;
+  const searchParams = reqest.nextUrl.searchParams;
 
-  const page: number = Number(reqest.nextUrl.searchParams.get("page")) || 1;
+  const sort: TSort = (searchParams.get("sort") as TSort) || "N-O";
 
-  const allBooks: Book[] = books;
+  const pageLength: number = Number(searchParams.get("length")) || 9;
 
+  const page: number = Number(searchParams.get("page")) || 1;
+
+  const search: string | null = searchParams.get("search");
+
+  const category: TCategory | null = searchParams.get("category") as TCategory;
+
+  const from: number = Number(searchParams.get("from"));
+
+  const to: number = Number(searchParams.get("to"));
+
+  console.log(sort, page, pageLength, search, category, from, to);
+
+  let allBooks: Book[] = Array.from(books);
+
+  // Start filteration ---------------------------------------------------
   let sortedBooks: Book[] = [];
+
+  if (category && category !== "All") {
+    allBooks = allBooks.filter((book) => book.category === category);
+  }
+
+  if (from && to) {
+    allBooks = allBooks.filter(
+      (book) => book.price >= from && book.price <= to
+    );
+  }
+
+  if (search) {
+    const searchString = search.toLocaleLowerCase();
+    allBooks = allBooks.filter(
+      (book) =>
+        book.title.toLowerCase().includes(searchString) ||
+        book.author.toLocaleLowerCase().includes(searchString)
+    );
+  }
+
   switch (sort) {
     case "A-Z":
       sortedBooks = allBooks.sort((a, b) => a.title.localeCompare(b.title));

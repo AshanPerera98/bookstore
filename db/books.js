@@ -239,7 +239,7 @@ const books = [
     image: "https://picsum.photos/id/258/400/300",
     published: 1979,
     price: 7.99,
-    category: "Science Fiction",
+    category: "Science-Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174023",
@@ -360,7 +360,7 @@ const books = [
     image: "https://picsum.photos/id/269/400/300",
     published: 1985,
     price: 10.49,
-    category: "Science Fiction",
+    category: "Science-Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174034",
@@ -458,7 +458,7 @@ const books = [
     image: "https://picsum.photos/id/278/400/300",
     published: 2011,
     price: 10.49,
-    category: "Science Fiction",
+    category: "Science-Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174043",
@@ -513,7 +513,7 @@ const books = [
     image: "https://picsum.photos/id/283/400/300",
     published: 2013,
     price: 10.99,
-    category: "Science Fiction",
+    category: "Science-Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174048",
@@ -535,7 +535,7 @@ const books = [
     image: "https://picsum.photos/id/287/400/300",
     published: 2011,
     price: 10.49,
-    category: "Science Fiction",
+    category: "Science-Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174050",
