@@ -1,6 +1,6 @@
-import { Book } from "@/interfaces/Book";
-import { TCategory, TSort } from "@/types/types";
 import { create } from "zustand";
+import { Book } from "@/interfaces";
+import { TCategory, TSort } from "@/types/types";
 
 type BookStore = {
   books: Book[];

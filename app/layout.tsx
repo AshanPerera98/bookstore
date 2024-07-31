@@ -4,9 +4,10 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-import '@mantine/core/styles.css';
+import "@mantine/core/styles.css";
 
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import NavBar from "@/components/navbar/NavBar";
 
 export const metadata: Metadata = {
   title: "Bookstore",
@@ -20,9 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head><ColorSchemeScript /></head>
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body className={inter.className}>
         <MantineProvider>
+          <NavBar />
           {children}
         </MantineProvider>
       </body>

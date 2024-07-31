@@ -9,7 +9,7 @@ import {
 } from "@mantine/core";
 import { categories, sortOptions, resultOptions } from "@/constants";
 import { useEffect } from "react";
-import { useBookStore } from "@/store/store";
+import { useBookStore } from "@/store";
 import { TCategory, TSort } from "@/types/types";
 
 type props = {

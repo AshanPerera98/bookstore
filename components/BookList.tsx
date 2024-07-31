@@ -1,15 +1,24 @@
 "use client";
 
 import BookCard from "@/components/BookCard";
-import { Book } from "@/interfaces/Book";
-import { useBookStore } from "@/store/store";
+import { Book } from "@/interfaces";
+import { useBookStore } from "@/store";
+import { Loader } from "@mantine/core";
 
 type props = {
   className?: string;
 };
 
 const BookList = ({ className }: props) => {
-  const { books, page, totalPages } = useBookStore((state) => state);
+  const books = useBookStore((state) => state.books);
+
+  if (!books.length) {
+    return (
+      <div className="grow flex justify-center items-center bg-white rounded-2xl">
+        <Loader color="blue" />
+      </div>
+    );
+  }
 
   return (
     <div

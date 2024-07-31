@@ -1,4 +1,4 @@
-import { Book } from "@/interfaces/Book";
+import { Book } from "@/interfaces";
 import { NextRequest, NextResponse } from "next/server";
 import { TCategory, TSort } from "@/types/types.js";
 

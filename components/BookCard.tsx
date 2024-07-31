@@ -2,13 +2,19 @@
 
 import { Badge, Button, Card, CardSection, Group, Text } from "@mantine/core";
 import Image from "next/image";
-import React from "react";
+import { useCartStore } from "@/store";
 
-import { Book } from "@/interfaces/Book";
+import { Book } from "@/interfaces";
 
 const BookCard = (props: Book) => {
   const { id, image, title, author, price, published, description, category } =
     props;
+  const { addItem, checkItemInCart } = useCartStore((state) => state);
+
+  const clickAddToCart = () => {
+    addItem({ bookId: id, title, author, price, quantity: 1 });
+  };
+
   return (
     <Card maw={360} miw={240} shadow="sm" radius="md" withBorder>
       <CardSection>
@@ -37,7 +43,12 @@ const BookCard = (props: Book) => {
             {`$${price}`}
           </Text>
 
-          <Button radius="md" style={{ flex: 1 }}>
+          <Button
+            radius="md"
+            style={{ flex: 1 }}
+            onClick={clickAddToCart}
+            disabled={checkItemInCart(id)}
+          >
             Add to cart
           </Button>
         </Group>
