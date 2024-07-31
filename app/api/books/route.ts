@@ -8,7 +8,7 @@ type TLength = 10 | 20;
 
 export const GET = async (reqest: NextRequest) => {
   const sort: TSort =
-    (reqest.nextUrl.searchParams.get("sort") as TSort) || "A-Z";
+    (reqest.nextUrl.searchParams.get("sort") as TSort) || "N-O";
 
   const pageLength: TLength =
     (Number(reqest.nextUrl.searchParams.get("length")) as TLength) || 10;

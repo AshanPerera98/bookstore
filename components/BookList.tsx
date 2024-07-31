@@ -7,14 +7,19 @@ type apiResponse = {
   totalPages: number;
 };
 
-const BookList = async () => {
-  const response = await fetch(`http://localhost:3000/api/books?length=10`);
-  new Promise((resolver) => setTimeout(resolver, 1000));
+type props = {
+  className?: string;
+};
+
+const BookList = async ({ className }: props) => {
+  const response = await fetch(`http://localhost:3000/api/books?length=9`, {
+    next: { revalidate: 300 },
+  });
   const { books, page, totalPages }: apiResponse = await response.json();
 
   return (
-    <div className="grid gap-12 grid-cols-3">
-      {books.map((book) => {
+    <div className={`${className} grid gap-8 grid-cols-3`}>
+      {books.map((book: Book) => {
         return <BookCard key={book.id} {...book} />;
       })}
     </div>

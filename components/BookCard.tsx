@@ -7,23 +7,27 @@ import React from "react";
 import { Book } from "@/interfaces/Book";
 
 const BookCard = (props: Book) => {
-  const { id, image, title, author, price, published, description } = props;
+  const { id, image, title, author, price, published, description, category } =
+    props;
   return (
     <Card w={360} shadow="sm" radius="md" withBorder>
       <CardSection>
         <Image alt={title} src={image} width={400} height={300} />
       </CardSection>
       <Card.Section mt="md" px={20}>
-        <Text fz="lg" fw={500}>
-          {title}
-        </Text>
-        <Badge size="sm" variant="light">
+        <Group justify="space-between">
+          <Text fz="lg" fw={600}>
+            {title}
+          </Text>
+          <Text fz="xs">{published}</Text>
+        </Group>
+        <Text size="sm" c="dimmed">
           {author}
-        </Badge>
-        <Text fz="xs" c="dimmed" mt={5}>
-          {`published : ${published}`}
         </Text>
-        <Text fz="sm" mt="xs">
+        <Badge size="sm" variant="light" mt={12}>
+          {category}
+        </Badge>
+        <Text fz="sm" mt={16}>
           {description}
         </Text>
       </Card.Section>
@@ -33,7 +37,7 @@ const BookCard = (props: Book) => {
             {`$${price}`}
           </Text>
 
-          <Button radius="xl" style={{ flex: 1 }}>
+          <Button radius="md" style={{ flex: 1 }}>
             Add to cart
           </Button>
         </Group>

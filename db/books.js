@@ -8,6 +8,7 @@ const books = [
     image: "https://picsum.photos/id/237/400/300",
     published: 1960,
     price: 7.99,
+    category: "Classic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174002",
@@ -18,6 +19,7 @@ const books = [
     image: "https://picsum.photos/id/238/400/300",
     published: 1949,
     price: 6.99,
+    category: "Dystopian",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174003",
@@ -28,6 +30,7 @@ const books = [
     image: "https://picsum.photos/id/239/400/300",
     published: 1813,
     price: 5.99,
+    category: "Romance",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174004",
@@ -38,6 +41,7 @@ const books = [
     image: "https://picsum.photos/id/240/400/300",
     published: 1925,
     price: 10.99,
+    category: "Classic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174005",
@@ -48,6 +52,7 @@ const books = [
     image: "https://picsum.photos/id/241/400/300",
     published: 1851,
     price: 8.99,
+    category: "Adventure",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174006",
@@ -58,6 +63,7 @@ const books = [
     image: "https://picsum.photos/id/242/400/300",
     published: 1951,
     price: 9.99,
+    category: "Classic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174007",
@@ -68,6 +74,7 @@ const books = [
     image: "https://picsum.photos/id/243/400/300",
     published: 1932,
     price: 8.49,
+    category: "Dystopian",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174008",
@@ -78,6 +85,7 @@ const books = [
     image: "https://picsum.photos/id/244/400/300",
     published: 1953,
     price: 7.49,
+    category: "Dystopian",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174009",
@@ -88,6 +96,7 @@ const books = [
     image: "https://picsum.photos/id/245/400/300",
     published: 1937,
     price: 10.49,
+    category: "Fantasy",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174010",
@@ -98,6 +107,7 @@ const books = [
     image: "https://picsum.photos/id/246/400/300",
     published: 1954,
     price: 8.99,
+    category: "Classic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174011",
@@ -108,6 +118,7 @@ const books = [
     image: "https://picsum.photos/id/247/400/300",
     published: 1847,
     price: 6.49,
+    category: "Romance",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174012",
@@ -118,6 +129,7 @@ const books = [
     image: "https://picsum.photos/id/248/400/300",
     published: 1847,
     price: 7.89,
+    category: "Romance",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174013",
@@ -128,6 +140,7 @@ const books = [
     image: "https://picsum.photos/id/249/400/300",
     published: 1890,
     price: 9.49,
+    category: "Gothic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174014",
@@ -138,6 +151,7 @@ const books = [
     image: "https://picsum.photos/id/250/400/300",
     published: 1950,
     price: 11.99,
+    category: "Fantasy",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174015",
@@ -148,6 +162,7 @@ const books = [
     image: "https://picsum.photos/id/251/400/300",
     published: 1945,
     price: 6.89,
+    category: "Satire",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174016",
@@ -158,6 +173,7 @@ const books = [
     image: "https://picsum.photos/id/252/400/300",
     published: 1862,
     price: 12.99,
+    category: "Historical",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174017",
@@ -168,6 +184,7 @@ const books = [
     image: "https://picsum.photos/id/253/400/300",
     published: 1967,
     price: 14.99,
+    category: "Magical Realism",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174018",
@@ -178,6 +195,7 @@ const books = [
     image: "https://picsum.photos/id/254/400/300",
     published: 1961,
     price: 11.49,
+    category: "Satire",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174019",
@@ -188,6 +206,7 @@ const books = [
     image: "https://picsum.photos/id/255/400/300",
     published: 1963,
     price: 8.49,
+    category: "Autobiography",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174020",
@@ -198,6 +217,7 @@ const books = [
     image: "https://picsum.photos/id/256/400/300",
     published: 2006,
     price: 9.99,
+    category: "Post-Apocalyptic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174021",
@@ -208,6 +228,7 @@ const books = [
     image: "https://picsum.photos/id/257/400/300",
     published: 1977,
     price: 10.49,
+    category: "Horror",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174022",
@@ -218,6 +239,7 @@ const books = [
     image: "https://picsum.photos/id/258/400/300",
     published: 1979,
     price: 7.99,
+    category: "Science Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174023",
@@ -228,6 +250,7 @@ const books = [
     image: "https://picsum.photos/id/259/400/300",
     published: 1988,
     price: 9.49,
+    category: "Adventure",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174024",
@@ -238,6 +261,7 @@ const books = [
     image: "https://picsum.photos/id/260/400/300",
     published: 1936,
     price: 12.99,
+    category: "Historical",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174025",
@@ -248,6 +272,7 @@ const books = [
     image: "https://picsum.photos/id/261/400/300",
     published: 1982,
     price: 10.99,
+    category: "Historical",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174026",
@@ -258,6 +283,7 @@ const books = [
     image: "https://picsum.photos/id/262/400/300",
     published: 1868,
     price: 8.49,
+    category: "Classic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174027",
@@ -268,6 +294,7 @@ const books = [
     image: "https://picsum.photos/id/263/400/300",
     published: 1897,
     price: 7.99,
+    category: "Gothic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174028",
@@ -278,6 +305,7 @@ const books = [
     image: "https://picsum.photos/id/264/400/300",
     published: 1818,
     price: 6.99,
+    category: "Gothic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174029",
@@ -288,6 +316,7 @@ const books = [
     image: "https://picsum.photos/id/265/400/300",
     published: 1967,
     price: 8.49,
+    category: "Classic",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174030",
@@ -298,6 +327,7 @@ const books = [
     image: "https://picsum.photos/id/266/400/300",
     published: 1993,
     price: 7.49,
+    category: "Dystopian",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174031",
@@ -308,6 +338,7 @@ const books = [
     image: "https://picsum.photos/id/267/400/300",
     published: 1962,
     price: 8.99,
+    category: "Fantasy",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174032",
@@ -318,6 +349,7 @@ const books = [
     image: "https://picsum.photos/id/268/400/300",
     published: 1972,
     price: 9.49,
+    category: "Fantasy",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174033",
@@ -328,6 +360,7 @@ const books = [
     image: "https://picsum.photos/id/269/400/300",
     published: 1985,
     price: 10.49,
+    category: "Science Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174034",
@@ -338,6 +371,7 @@ const books = [
     image: "https://picsum.photos/id/270/400/300",
     published: 2003,
     price: 11.99,
+    category: "Historical",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174035",
@@ -348,6 +382,7 @@ const books = [
     image: "https://picsum.photos/id/271/400/300",
     published: 2003,
     price: 12.49,
+    category: "Thriller",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174036",
@@ -358,6 +393,7 @@ const books = [
     image: "https://picsum.photos/id/272/400/300",
     published: 2001,
     price: 13.49,
+    category: "Adventure",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174037",
@@ -368,6 +404,7 @@ const books = [
     image: "https://picsum.photos/id/273/400/300",
     published: 2008,
     price: 10.99,
+    category: "Dystopian",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174038",
@@ -378,36 +415,39 @@ const books = [
     image: "https://picsum.photos/id/274/400/300",
     published: 2002,
     price: 9.49,
+    category: "Thriller",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174039",
     title: "The Secret Life of Bees",
     author: "Sue Monk Kidd",
     description:
-      "A novel about a young girl's journey to uncover the truth about her deceased mother and herself.",
+      "A novel about a young girl who escapes her troubled life and finds solace with three beekeeping sisters.",
     image: "https://picsum.photos/id/275/400/300",
-    published: 2002,
+    published: 2001,
     price: 8.99,
+    category: "Historical",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174040",
-    title: "Big Little Lies",
-    author: "Liane Moriarty",
+    title: "The Help",
+    author: "Kathryn Stockett",
     description:
-      "A novel about a group of women whose seemingly perfect lives unravel, leading to a murder.",
+      "A novel about African American maids working in white households in Jackson, Mississippi, during the 1960s.",
     image: "https://picsum.photos/id/276/400/300",
-    published: 2014,
-    price: 11.49,
+    published: 2009,
+    price: 12.49,
+    category: "Historical",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174041",
-    title: "Where the Crawdads Sing",
-    author: "Delia Owens",
-    description:
-      "A novel about a young girl who grows up isolated in the marshlands and becomes the prime suspect in a murder case.",
+    title: "The Fault in Our Stars",
+    author: "John Green",
+    description: "A novel about two teenagers with cancer who fall in love.",
     image: "https://picsum.photos/id/277/400/300",
-    published: 2018,
-    price: 12.99,
+    published: 2012,
+    price: 8.49,
+    category: "Romance",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174042",
@@ -418,6 +458,7 @@ const books = [
     image: "https://picsum.photos/id/278/400/300",
     published: 2011,
     price: 10.49,
+    category: "Science Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174043",
@@ -428,6 +469,7 @@ const books = [
     image: "https://picsum.photos/id/279/400/300",
     published: 2019,
     price: 9.99,
+    category: "Thriller",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174044",
@@ -438,6 +480,7 @@ const books = [
     image: "https://picsum.photos/id/280/400/300",
     published: 2011,
     price: 11.99,
+    category: "Fantasy",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174045",
@@ -448,6 +491,7 @@ const books = [
     image: "https://picsum.photos/id/281/400/300",
     published: 2018,
     price: 9.49,
+    category: "Thriller",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174046",
@@ -458,6 +502,7 @@ const books = [
     image: "https://picsum.photos/id/282/400/300",
     published: 2015,
     price: 8.99,
+    category: "Romance",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174047",
@@ -468,6 +513,7 @@ const books = [
     image: "https://picsum.photos/id/283/400/300",
     published: 2013,
     price: 10.99,
+    category: "Science Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174048",
@@ -478,6 +524,7 @@ const books = [
     image: "https://picsum.photos/id/284/400/300",
     published: 2011,
     price: 9.49,
+    category: "Dystopian",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174049",
@@ -485,9 +532,10 @@ const books = [
     author: "Ernest Cline",
     description:
       "A science fiction novel about a young man's quest to find an Easter egg in a virtual reality world.",
-    image: "https://picsum.photos/id/285/400/300",
+    image: "https://picsum.photos/id/287/400/300",
     published: 2011,
     price: 10.49,
+    category: "Science Fiction",
   },
   {
     id: "123e4567-e89b-12d3-a456-426614174050",
@@ -495,9 +543,10 @@ const books = [
     author: "Donna Tartt",
     description:
       "A novel about a young boy who survives a terrorist attack and steals a famous painting.",
-    image: "https://picsum.photos/id/286/400/300",
+    image: "https://picsum.photos/id/288/400/300",
     published: 2013,
     price: 13.99,
+    category: "Thriller",
   },
 ];
 
