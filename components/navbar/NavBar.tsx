@@ -1,28 +1,16 @@
 "use client";
 
-import {
-  Group,
-  Text,
-  Divider,
-  Box,
-  Burger,
-  Drawer,
-  ScrollArea,
-  rem,
-  Avatar,
-  Indicator,
-} from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { Group, Text, Box, Avatar, Indicator, ActionIcon } from "@mantine/core";
 import classes from "./NavBar.module.css";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaArrowLeft } from "react-icons/fa";
 
 import { useCartStore } from "@/store";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const NavBar = () => {
-  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
-    useDisclosure(false);
   const totalItems = useCartStore((state) => state.totalItems);
+  const router = useRouter();
 
   return (
     <div
@@ -32,11 +20,23 @@ const NavBar = () => {
       <Box p={16} className="flex justify-center">
         <header className={classes.header}>
           <Group justify="space-between" h="100%">
-            <Text fz={"h3"} fw={600}>
-              BookStore
-            </Text>
+            <ActionIcon
+              variant="default"
+              size="lg"
+              aria-label="Back to dashboard"
+              hiddenFrom="xs"
+              onClick={(e) => router.push("/")}
+            >
+              <FaArrowLeft />
+            </ActionIcon>
 
-            <Group h="100%" gap={0} visibleFrom="sm">
+            <Link href={"/"}>
+              <Text fz={"h3"} fw={600}>
+                BookStore
+              </Text>
+            </Link>
+
+            <Group h="100%" gap={0} visibleFrom="xs">
               <Link href="/" className={classes.link}>
                 Home
               </Link>
@@ -45,7 +45,7 @@ const NavBar = () => {
               </Link>
             </Group>
 
-            <Group visibleFrom="sm">
+            <Group>
               <Link href="/cart">
                 <Indicator color="indigo" inline label={totalItems} size={16}>
                   <Avatar color="indigo" radius="sm">
@@ -54,47 +54,8 @@ const NavBar = () => {
                 </Indicator>
               </Link>
             </Group>
-
-            <Burger
-              opened={drawerOpened}
-              onClick={toggleDrawer}
-              hiddenFrom="sm"
-            />
           </Group>
         </header>
-
-        <Drawer
-          opened={drawerOpened}
-          onClose={closeDrawer}
-          size="100%"
-          padding="md"
-          title="Navigation"
-          hiddenFrom="sm"
-          zIndex={1000000}
-        >
-          <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
-            <Divider my="sm" />
-
-            <Link href="/" className={classes.link}>
-              Home
-            </Link>
-            <Link href="/cart" className={classes.link}>
-              Cart
-            </Link>
-
-            <Divider my="sm" />
-
-            <Group justify="center" grow pb="xl" px="md">
-              <Link href="/cart">
-                <Indicator color="indigo" inline label={totalItems} size={16}>
-                  <Avatar color="indigo" radius="sm">
-                    <FaShoppingCart size="1.5rem" />
-                  </Avatar>
-                </Indicator>
-              </Link>
-            </Group>
-          </ScrollArea>
-        </Drawer>
       </Box>
     </div>
   );

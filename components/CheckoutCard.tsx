@@ -30,9 +30,7 @@ const CheckoutCard = () => {
         gradient={{ from: "indigo", to: "violet", deg: 145 }}
         rightSection={<IoBagCheckOutline size={14} />}
         disabled={totalItems === 0}
-        onClick={(e) => {
-          router.push("/checkout");
-        }}
+        onClick={(e) => router.push("/checkout")}
         fullWidth
       >
         Checkout

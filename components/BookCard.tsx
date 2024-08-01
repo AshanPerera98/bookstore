@@ -1,14 +1,5 @@
-import {
-  ActionIcon,
-  Badge,
-  Button,
-  Card,
-  CardSection,
-  Group,
-  Text,
-} from "@mantine/core";
+import { Badge, Button, Card, CardSection, Group, Text } from "@mantine/core";
 import Image from "next/image";
-import { FaCartPlus } from "react-icons/fa6";
 import { useCartStore } from "@/store";
 
 import { Book } from "@/interfaces";
@@ -51,29 +42,28 @@ const BookCard = (props: Book) => {
         </Card.Section>
         <hr />
         <Card.Section>
-          <div className="flex flex-row justify-between items-center m-4">
+          <div className="flex flex-row justify-between items-center m-4 gap-8">
             <Text fz="xl" fw={700} style={{ lineHeight: 1 }}>
               {`$${price}`}
             </Text>
-            <ActionIcon
-              variant="gradient"
-              size="xl"
-              aria-label="Gradient action icon"
-              gradient={{ from: "red", to: "pink", deg: 145 }}
+            <Button
+              style={{ flex: 1 }}
               onClick={clickAddToCart}
               disabled={checkItemInCart(id)}
+              variant="gradient"
+              radius="md"
+              gradient={{ from: "indigo", to: "violet", deg: 145 }}
             >
-              <FaCartPlus />
-            </ActionIcon>
+              Add to cart
+            </Button>
           </div>
         </Card.Section>
       </Card>
     );
   };
 
-  return (
-    <>
-      {renderMobileBookCard()}
+  const renderBookCard = () => {
+    return (
       <Card maw={360} miw={240} shadow="sm" radius="md" visibleFrom="sm">
         <CardSection>
           <Image alt={title} src={image} width={400} height={300} />
@@ -114,6 +104,12 @@ const BookCard = (props: Book) => {
           </Group>
         </Card.Section>
       </Card>
+    );
+  };
+
+  return (
+    <>
+      {renderMobileBookCard()} {renderBookCard()}
     </>
   );
 };
