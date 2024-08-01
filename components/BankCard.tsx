@@ -157,7 +157,14 @@ const BankCard = () => {
               error={errors.pin?.message as string}
             />
           </div>
-          <Button type="submit" mt="lg" fullWidth loading={isSubmitting}>
+          <Button
+            type="submit"
+            mt="lg"
+            fullWidth
+            loading={isSubmitting}
+            radius="md"
+            gradient={{ from: "indigo", to: "violet", deg: 145 }}
+          >
             Place order
           </Button>
         </form>

@@ -102,11 +102,11 @@ const BookCard = (props: Book) => {
             </Text>
 
             <Button
-              radius="md"
               style={{ flex: 1 }}
               onClick={clickAddToCart}
               disabled={checkItemInCart(id)}
               variant="gradient"
+              radius="md"
               gradient={{ from: "indigo", to: "violet", deg: 145 }}
             >
               Add to cart

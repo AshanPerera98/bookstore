@@ -85,7 +85,14 @@ const AddressCard = () => {
             type="number"
           />
         </div>
-        <Button type="submit" mt="lg" fullWidth loading={isSubmitting}>
+        <Button
+          type="submit"
+          mt="lg"
+          fullWidth
+          loading={isSubmitting}
+          radius="md"
+          gradient={{ from: "indigo", to: "violet", deg: 145 }}
+        >
           Continue
         </Button>
       </form>
