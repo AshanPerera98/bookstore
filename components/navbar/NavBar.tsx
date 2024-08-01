@@ -2,7 +2,6 @@
 
 import {
   Group,
-  Button,
   Text,
   Divider,
   Box,
@@ -48,8 +47,8 @@ const NavBar = () => {
 
             <Group visibleFrom="sm">
               <Link href="/cart">
-                <Indicator inline label={totalItems} size={16}>
-                  <Avatar color="blue" radius="sm">
+                <Indicator color="indigo" inline label={totalItems} size={16}>
+                  <Avatar color="indigo" radius="sm">
                     <FaShoppingCart size="1.5rem" />
                   </Avatar>
                 </Indicator>
@@ -87,8 +86,8 @@ const NavBar = () => {
 
             <Group justify="center" grow pb="xl" px="md">
               <Link href="/cart">
-                <Indicator inline label={totalItems} size={16}>
-                  <Avatar color="blue" radius="sm">
+                <Indicator color="indigo" inline label={totalItems} size={16}>
+                  <Avatar color="indigo" radius="sm">
                     <FaShoppingCart size="1.5rem" />
                   </Avatar>
                 </Indicator>

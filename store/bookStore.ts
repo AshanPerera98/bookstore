@@ -22,12 +22,12 @@ type BookStore = {
   setCount: (value: number) => void;
 
   fetchBooks: () => Promise<void>;
-  nextPage: (value: boolean) => Promise<void>;
+  navigatePage: (value: number) => Promise<void>;
 };
 
 export const useBookStore = create<BookStore>((set, get) => ({
   books: [],
-  page: 0,
+  page: 1,
   totalPages: 0,
 
   seach: null,
@@ -38,26 +38,28 @@ export const useBookStore = create<BookStore>((set, get) => ({
   count: 9,
 
   setSearch: (seach) => {
-    set({ seach });
+    set({ seach, page: 1 });
   },
   setSort: (sort) => {
-    set({ sort });
+    set({ sort, page: 1 });
   },
   setCategory: (category) => {
-    set({ category });
+    set({ category, page: 1 });
   },
   setFrom: (from) => {
-    set({ from });
+    set({ from, page: 1 });
   },
   setTo: (to) => {
-    set({ to });
+    set({ to, page: 1 });
   },
   setCount: (count) => {
-    set({ count });
+    set({ count, page: 1 });
   },
 
   fetchBooks: async () => {
-    let queryParams = `?sort=${get().sort}&length=${get().count}`;
+    let queryParams = `?sort=${get().sort}&length=${get().count}&page=${
+      get().page
+    }`;
 
     if (get().seach) {
       queryParams = `${queryParams}&search=${get().seach}`;
@@ -80,10 +82,8 @@ export const useBookStore = create<BookStore>((set, get) => ({
     set({ books, page, totalPages });
   },
 
-  nextPage: async (value) => {
-    let queryParams = `?sort=${get().sort}&length=${
-      value ? get().count + 1 : get().count - 1
-    }`;
+  navigatePage: async (value) => {
+    let queryParams = `?sort=${get().sort}&length=${get().count}&page=${value}`;
 
     if (get().seach) {
       queryParams = `${queryParams}&search=${get().seach}`;

@@ -1,5 +1,3 @@
-"use client";
-
 import { Badge, Button, Card, CardSection, Group, Text } from "@mantine/core";
 import Image from "next/image";
 import { useCartStore } from "@/store";
@@ -48,6 +46,8 @@ const BookCard = (props: Book) => {
             style={{ flex: 1 }}
             onClick={clickAddToCart}
             disabled={checkItemInCart(id)}
+            variant="gradient"
+            gradient={{ from: "indigo", to: "violet", deg: 145 }}
           >
             Add to cart
           </Button>

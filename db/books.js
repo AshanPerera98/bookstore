@@ -93,7 +93,7 @@ const books = [
     author: "J.R.R. Tolkien",
     description:
       "A fantasy novel about the adventure of Bilbo Baggins, who finds himself on an unexpected journey.",
-    image: "https://picsum.photos/id/245/400/300",
+    image: "https://picsum.photos/id/102/400/300",
     published: 1937,
     price: 10.49,
     category: "Fantasy",
@@ -104,7 +104,7 @@ const books = [
     author: "William Golding",
     description:
       "A novel about a group of boys stranded on an uninhabited island who descend into savagery.",
-    image: "https://picsum.photos/id/246/400/300",
+    image: "https://picsum.photos/id/103/400/300",
     published: 1954,
     price: 8.99,
     category: "Classic",
@@ -280,7 +280,7 @@ const books = [
     author: "Louisa May Alcott",
     description:
       "A novel about the lives, loves, and growth of the four March sisters in 19th-century New England.",
-    image: "https://picsum.photos/id/262/400/300",
+    image: "https://picsum.photos/id/101/400/300",
     published: 1868,
     price: 8.49,
     category: "Classic",

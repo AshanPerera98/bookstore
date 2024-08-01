@@ -107,6 +107,8 @@ const SideFilter = ({ className }: props) => {
           mt={24}
           justify="center"
           fullWidth
+          variant="gradient"
+          gradient={{ from: "indigo", to: "violet", deg: 145 }}
           onClick={fetchFilteredBooks}
         >
           Filter

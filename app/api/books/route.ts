@@ -75,12 +75,12 @@ export const GET = async (reqest: NextRequest) => {
       break;
   }
 
-  const finalBooks = sortedBooks.splice((page - 1) * pageLength, pageLength);
-
   const totalPages =
-    allBooks.length % pageLength === 0
-      ? Math.floor(allBooks.length / pageLength)
-      : Math.floor(allBooks.length / pageLength) + 1;
+    sortedBooks.length % pageLength === 0
+      ? Math.floor(sortedBooks.length / pageLength)
+      : Math.ceil(sortedBooks.length / pageLength);
+
+  const finalBooks = sortedBooks.splice((page - 1) * pageLength, pageLength);
 
   return NextResponse.json(
     { books: finalBooks, page, totalPages },

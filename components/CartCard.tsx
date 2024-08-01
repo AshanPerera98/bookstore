@@ -1,14 +1,50 @@
 import { StoredBook } from "@/interfaces";
-import { ActionIcon, Button, Card, Group, Text } from "@mantine/core";
+import { ActionIcon, Button, Card, Group, Modal, Text } from "@mantine/core";
 import { FiPlus, FiMinus, FiTrash } from "react-icons/fi";
 
 import { useCartStore } from "@/store";
+import { useDisclosure } from "@mantine/hooks";
 
 const CartCard = (props: StoredBook) => {
   const { bookId, title, author, price, quantity } = props;
   const { incrementQuantity, removeItem } = useCartStore((state) => state);
+  const [opened, { open, close }] = useDisclosure(false);
   return (
     <div>
+      <Modal opened={opened} onClose={close} title="Remove item">
+        <Card>
+          <Card.Section p="md">
+            <Text>Are you sure you want to remove this book from cart?</Text>
+          </Card.Section>
+          <Card.Section
+            p="md"
+            mx={0}
+            mb={12}
+            className="bg-slate-50 rounded-lg shadow-lg"
+          >
+            <Text fz="lg" fw={600}>
+              {title}
+            </Text>
+            <Text size="sm" c="dimmed">
+              {author}
+            </Text>
+          </Card.Section>
+          <Card.Section p="md">
+            <Button
+              fullWidth
+              variant="gradient"
+              gradient={{ from: "red", to: "pink", deg: 145 }}
+              rightSection={<FiTrash size={14} />}
+              onClick={(e) => {
+                removeItem(bookId);
+              }}
+            >
+              Remove
+            </Button>
+          </Card.Section>
+        </Card>
+      </Modal>
+
       <Card shadow="sm" radius="md" padding="lg" visibleFrom="sm">
         <div className="grid grid-cols-12 gap-2 md:px-2">
           <div className="col-span-4">
@@ -57,6 +93,7 @@ const CartCard = (props: StoredBook) => {
               size="xl"
               aria-label="Gradient action icon"
               gradient={{ from: "red", to: "pink", deg: 145 }}
+              onClick={open}
             >
               <FiTrash />
             </ActionIcon>
@@ -121,6 +158,7 @@ const CartCard = (props: StoredBook) => {
               variant="gradient"
               gradient={{ from: "red", to: "pink", deg: 145 }}
               rightSection={<FiTrash size={14} />}
+              onClick={open}
             >
               Remove
             </Button>
