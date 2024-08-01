@@ -1,20 +1,25 @@
 import { create } from "zustand";
 import { StoredBook } from "@/interfaces";
+import { TCheckoutState } from "@/types/types";
 
 type CartStore = {
   items: StoredBook[];
   totalItems: number;
+  checkoutState: TCheckoutState;
 
   addItem: (item: StoredBook) => void;
   removeItem: (id: string) => void;
   incrementQuantity: (id: string, value: boolean) => void;
   checkItemInCart: (id: string) => boolean;
   getCheckoutDetails: () => { totalItems: number; totalPrice: number };
+  setCheckoutState: (state: TCheckoutState) => void;
+  resetStore: () => void;
 };
 
 export const useCartStore = create<CartStore>((set, get) => ({
   items: [],
   totalItems: 0,
+  checkoutState: "NONE",
 
   addItem: (item) => {
     set((state) => ({
@@ -58,5 +63,13 @@ export const useCartStore = create<CartStore>((set, get) => ({
     });
 
     return { totalItems, totalPrice };
+  },
+
+  setCheckoutState: (state) => {
+    set({ checkoutState: state });
+  },
+
+  resetStore: () => {
+    set({ items: [], totalItems: 0, checkoutState: "NONE" });
   },
 }));

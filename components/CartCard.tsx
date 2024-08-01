@@ -11,7 +11,7 @@ const CartCard = (props: StoredBook) => {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <div>
-      <Modal opened={opened} onClose={close} title="Remove item">
+      <Modal opened={opened} onClose={close} centered>
         <Card>
           <Card.Section p="md">
             <Text>Are you sure you want to remove this book from cart?</Text>

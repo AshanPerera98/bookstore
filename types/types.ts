@@ -15,3 +15,5 @@ export type TCategory =
   | "Gothic"
   | "Thriller"
   | "Romance";
+
+export type TCheckoutState = "NONE" | "PENDING";
