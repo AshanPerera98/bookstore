@@ -1,4 +1,4 @@
-This is a sample Book Store project build by Ashan Perera.
+This is a sample Book Store project built by Ashan Perera.
 
 A hosted version of the project can be found in [ashanperera-bookstore.netlify.app](https://ashanperera-bookstore.netlify.app/)
 
@@ -15,9 +15,9 @@ A hosted version of the project can be found in [ashanperera-bookstore.netlify.a
 
 ## (Instructions) How to Tweak
 
-- As backend a static JavaScript object has been used. Changing that object will mimic the db changes.
-- To mimic requests and responses an artificial delay has been placed in the api routes. Which can be turn off by commenting.
-- To recreate error situations an 'errorState' constant has been placed on top of each api route. Turning it on will show an server error.
+- A static JavaScript object was used for the backend. Changing that object will mimic the DB changes.
+- To mimic requests and responses an artificial delay has been placed in the api routes. Which can be turned off by commenting.
+- To recreate error situations an 'errorState' constant has been placed on top of each api route. Turning it on will show a server error.
 
 ## Features
 
