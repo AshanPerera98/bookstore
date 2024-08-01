@@ -14,6 +14,9 @@ type BookStore = {
   to: number | null;
   count: number;
 
+  blockUI: boolean;
+  error: { message: string; status: number } | null;
+
   setSearch: (value: string) => void;
   setSort: (value: TSort) => void;
   setCategory: (value: TCategory) => void;
@@ -37,6 +40,9 @@ export const useBookStore = create<BookStore>((set, get) => ({
   to: null,
   count: 9,
 
+  blockUI: false,
+  error: null,
+
   setSearch: (seach) => {
     set({ seach, page: 1 });
   },
@@ -57,6 +63,8 @@ export const useBookStore = create<BookStore>((set, get) => ({
   },
 
   fetchBooks: async () => {
+    set({ blockUI: true });
+
     let queryParams = `?sort=${get().sort}&length=${get().count}&page=${
       get().page
     }`;
@@ -75,14 +83,21 @@ export const useBookStore = create<BookStore>((set, get) => ({
     }
 
     const response = await fetch(`/api/books${queryParams}`, {
-      cache: "no-store",
+      next: { revalidate: 300 },
     });
-    const { books, page, totalPages } = await response.json();
 
-    set({ books, page, totalPages });
+    if (response.status === 200) {
+      const { books, page, totalPages } = await response.json();
+      set({ books, page, totalPages, blockUI: false, error: null });
+    } else {
+      const message = await response.json();
+      set({ error: { message, status: response.status }, blockUI: false });
+    }
   },
 
   navigatePage: async (value) => {
+    set({ blockUI: true });
+
     let queryParams = `?sort=${get().sort}&length=${get().count}&page=${value}`;
 
     if (get().seach) {
@@ -99,10 +114,15 @@ export const useBookStore = create<BookStore>((set, get) => ({
     }
 
     const response = await fetch(`/api/books${queryParams}`, {
-      cache: "no-store",
+      next: { revalidate: 300 },
     });
-    const { books, page, totalPages } = await response.json();
 
-    set({ books, page, totalPages });
+    if (response.status === 200) {
+      const { books, page, totalPages } = await response.json();
+      set({ books, page, totalPages, blockUI: false, error: null });
+    } else {
+      const message = await response.json();
+      set({ error: { message, status: response.status }, blockUI: false });
+    }
   },
 }));

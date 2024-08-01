@@ -1,11 +1,20 @@
 import { addressSchema, TAddressSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Card, Group, Text, TextInput } from "@mantine/core";
+import { Address } from "@/interfaces";
+import { countries } from "@/constants";
+import {
+  Button,
+  Card,
+  Group,
+  NativeSelect,
+  Text,
+  TextInput,
+} from "@mantine/core";
 import { FieldValues, useForm } from "react-hook-form";
 import { useCartStore } from "@/store";
 
 const AddressCard = () => {
-  const setCheckoutState = useCartStore((state) => state.setCheckoutState);
+  const { setCheckoutState, setAddress } = useCartStore((state) => state);
 
   const {
     register,
@@ -17,32 +26,35 @@ const AddressCard = () => {
   });
 
   const onSubmit = async (data: FieldValues) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setAddress(data as Address);
     setCheckoutState("PENDING");
     reset();
   };
 
   return (
-    <Card shadow="sm" radius="md" padding="xl" visibleFrom="sm">
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <Card shadow="sm" radius="md" padding="xl">
+      <Group justify="center" align="center" mb="xl">
         <Text fz="lg" fw={600}>
-          Name
+          Shipping Details
         </Text>
-        <Group mt="sm" gap="md">
+      </Group>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Text fz="lg">Name</Text>
+        <div className="mt-4 grid grid-cols-2 gap-4">
           <TextInput
             placeholder="First name"
             {...register("firstName")}
             error={errors.firstName?.message as string}
           />
           <TextInput placeholder="Last name" {...register("lastName")} />
-        </Group>
-        <Text fz="lg" fw={600} mt="lg">
+        </div>
+        <Text fz="lg" mt="xl">
           Address
         </Text>
-        <Group mt="sm" gap="md">
+        <div className="mt-4 grid grid-cols-2 gap-4 w-full">
           <TextInput
             placeholder="Number"
-            type="number"
+            type="string"
             {...register("number")}
             error={errors.number?.message as string}
           />
@@ -51,18 +63,18 @@ const AddressCard = () => {
             {...register("street")}
             error={errors.street?.message as string}
           />
-        </Group>
-        <Group mt="sm" gap="md">
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-4">
           <TextInput
             placeholder="City"
             {...register("city")}
             error={errors.city?.message as string}
           />
           <TextInput placeholder="State" {...register("state")} />
-        </Group>
-        <Group mt="sm" gap="md">
-          <TextInput
-            placeholder="Country"
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-4">
+          <NativeSelect
+            data={countries}
             {...register("country")}
             error={errors.country?.message as string}
           />
@@ -72,7 +84,7 @@ const AddressCard = () => {
             error={errors.postal?.message as string}
             type="number"
           />
-        </Group>
+        </div>
         <Button type="submit" mt="lg" fullWidth loading={isSubmitting}>
           Continue
         </Button>

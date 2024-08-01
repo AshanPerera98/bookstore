@@ -12,7 +12,7 @@ const Cart = () => {
 
   const renderEmptyBanner = () => {
     return (
-      <div className="w-full h-[36rem] flex flex-col justify-evenly items-center">
+      <div className="w-full md:w-4/5 h-[36rem] flex flex-col justify-evenly items-center">
         <div className="flex flex-col items-center">
           <Text fz="xl" fw={600} mb="md">
             Oops! No items in the cart
@@ -70,9 +70,9 @@ const Cart = () => {
 
   return (
     <main className="flex flex-col items-center justify-between">
-      <div className="flex flex-col-reverse lg:flex-row w-full max-w-screen-2xl p-4 gap-6">
+      <div className="flex flex-col-reverse md:flex-row w-full max-w-screen-2xl p-4 gap-6">
         {totalItems > 0 ? renderCart() : renderEmptyBanner()}
-        <div className="lg:w-96 w-80">
+        <div className="w-full md:w-96 w-80">
           <CheckoutCard />
         </div>
       </div>

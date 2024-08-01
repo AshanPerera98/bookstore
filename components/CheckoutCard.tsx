@@ -2,9 +2,10 @@ import { Button, Card, Group, Text } from "@mantine/core";
 import { IoBagCheckOutline } from "react-icons/io5";
 
 import { useCartStore } from "@/store";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const CheckoutCard = () => {
+  const router = useRouter();
   const getCheckoutDetails = useCartStore((state) => state.getCheckoutDetails);
   const { totalItems, totalPrice } = getCheckoutDetails();
   return (
@@ -22,19 +23,20 @@ const CheckoutCard = () => {
         <Text>Total price</Text>
         <Text fw={600}> ${totalPrice}</Text>
       </Group>
-      <Link href="/checkout" className="w-full">
-        <Button
-          mt="lg"
-          radius="md"
-          variant="gradient"
-          gradient={{ from: "indigo", to: "violet", deg: 145 }}
-          rightSection={<IoBagCheckOutline size={14} />}
-          disabled={totalItems === 0}
-          fullWidth
-        >
-          Checkout
-        </Button>
-      </Link>
+      <Button
+        mt="lg"
+        radius="md"
+        variant="gradient"
+        gradient={{ from: "indigo", to: "violet", deg: 145 }}
+        rightSection={<IoBagCheckOutline size={14} />}
+        disabled={totalItems === 0}
+        onClick={(e) => {
+          router.push("/checkout");
+        }}
+        fullWidth
+      >
+        Checkout
+      </Button>
     </Card>
   );
 };

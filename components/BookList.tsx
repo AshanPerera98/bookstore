@@ -3,15 +3,36 @@
 import BookCard from "@/components/BookCard";
 import { Book } from "@/interfaces";
 import { useBookStore } from "@/store";
-import { Loader } from "@mantine/core";
+import { Loader, Text } from "@mantine/core";
 import Paginate from "./Paginate";
+import Image from "next/image";
 
 type props = {
   className?: string;
 };
 
 const BookList = ({ className }: props) => {
-  const books = useBookStore((state) => state.books);
+  const { books, error } = useBookStore((state) => state);
+
+  if (error) {
+    return (
+      <div className="w-full flex flex-col justify-evenly items-center">
+        <Text fz="xl" c="dimmed">
+          Oops! {error.message}
+        </Text>
+        <Image
+          src={
+            error.status === 500
+              ? "/undraw_server_down.svg"
+              : "/undraw_no_data.svg"
+          }
+          alt="Error image"
+          width={400}
+          height={400}
+        />
+      </div>
+    );
+  }
 
   if (!books.length) {
     return (

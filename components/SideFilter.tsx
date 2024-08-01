@@ -25,6 +25,7 @@ const SideFilter = ({ className }: props) => {
     setTo,
     setCount,
     fetchBooks,
+    blockUI,
   } = useBookStore((state) => state);
 
   const fetchFilteredBooks = () => {
@@ -110,6 +111,7 @@ const SideFilter = ({ className }: props) => {
           variant="gradient"
           gradient={{ from: "indigo", to: "violet", deg: 145 }}
           onClick={fetchFilteredBooks}
+          loading={blockUI}
         >
           Filter
         </Button>

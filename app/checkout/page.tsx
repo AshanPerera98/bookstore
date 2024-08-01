@@ -61,9 +61,9 @@ const Checkout = () => {
 
   return (
     <main className="flex flex-col items-center justify-between">
-      <div className="flex flex-row w-full max-w-screen-2xl p-4 gap-6 place-items-baseline">
+      <div className="flex flex-col-reverse md:flex-row w-full max-w-screen-2xl p-4 gap-6 place-items-baseline">
         {generateTabel()}
-        <div className="max-w-[64rem] min-w-[32rem]">{renderCard()}</div>
+        <div className="w-full md:w-[52rem]">{renderCard()}</div>
       </div>
     </main>
   );

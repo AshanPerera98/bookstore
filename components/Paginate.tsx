@@ -6,7 +6,9 @@ type props = {
 };
 
 const Paginate = ({ className }: props) => {
-  const { navigatePage, page, totalPages } = useBookStore((state) => state);
+  const { navigatePage, page, totalPages, blockUI } = useBookStore(
+    (state) => state
+  );
 
   const pageChange = (value: number) => {
     navigatePage(value);
@@ -15,10 +17,12 @@ const Paginate = ({ className }: props) => {
   return (
     <Pagination
       total={totalPages}
-      siblings={1}
+      siblings={2}
+      boundaries={1}
       value={page}
       onChange={pageChange}
       className={className}
+      disabled={blockUI}
     />
   );
 };

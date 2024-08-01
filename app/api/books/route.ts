@@ -4,6 +4,8 @@ import { TCategory, TSort } from "@/types/types.js";
 
 import books from "./../../../db/books.js";
 
+const errorState = false;
+
 export const GET = async (reqest: NextRequest) => {
   // Query parameter extranction ----------------------------------------
 
@@ -28,6 +30,7 @@ export const GET = async (reqest: NextRequest) => {
   let allBooks: Book[] = Array.from(books);
 
   // Start filteration ---------------------------------------------------
+
   let sortedBooks: Book[] = [];
 
   if (category && category !== "All") {
@@ -81,6 +84,18 @@ export const GET = async (reqest: NextRequest) => {
       : Math.ceil(sortedBooks.length / pageLength);
 
   const finalBooks = sortedBooks.splice((page - 1) * pageLength, pageLength);
+
+  await new Promise((resolve) => setTimeout(resolve, 1000)); // Artificial delay
+
+  // Responding --------------------------------
+
+  if (errorState) {
+    return NextResponse.json("Internal server error", { status: 500 });
+  }
+
+  if (!finalBooks.length) {
+    return NextResponse.json("No results found", { status: 404 });
+  }
 
   return NextResponse.json(
     { books: finalBooks, page, totalPages },

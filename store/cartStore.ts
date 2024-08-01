@@ -1,11 +1,13 @@
 import { create } from "zustand";
-import { StoredBook } from "@/interfaces";
+import { Address, StoredBook } from "@/interfaces";
 import { TCheckoutState } from "@/types/types";
 
 type CartStore = {
   items: StoredBook[];
   totalItems: number;
   checkoutState: TCheckoutState;
+
+  address: Address | null;
 
   addItem: (item: StoredBook) => void;
   removeItem: (id: string) => void;
@@ -14,12 +16,16 @@ type CartStore = {
   getCheckoutDetails: () => { totalItems: number; totalPrice: number };
   setCheckoutState: (state: TCheckoutState) => void;
   resetStore: () => void;
+
+  setAddress: (address: Address) => void;
 };
 
 export const useCartStore = create<CartStore>((set, get) => ({
   items: [],
   totalItems: 0,
   checkoutState: "NONE",
+
+  address: null,
 
   addItem: (item) => {
     set((state) => ({
@@ -70,6 +76,10 @@ export const useCartStore = create<CartStore>((set, get) => ({
   },
 
   resetStore: () => {
-    set({ items: [], totalItems: 0, checkoutState: "NONE" });
+    set({ items: [], totalItems: 0, checkoutState: "NONE", address: null });
+  },
+
+  setAddress: (address) => {
+    set({ address });
   },
 }));

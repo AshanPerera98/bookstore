@@ -9,9 +9,10 @@ const CartCard = (props: StoredBook) => {
   const { bookId, title, author, price, quantity } = props;
   const { incrementQuantity, removeItem } = useCartStore((state) => state);
   const [opened, { open, close }] = useDisclosure(false);
-  return (
-    <div>
-      <Modal opened={opened} onClose={close} centered>
+
+  const renderModal = () => {
+    return (
+      <Modal opened={opened} onClose={close} centered radius="lg">
         <Card>
           <Card.Section p="md">
             <Text>Are you sure you want to remove this book from cart?</Text>
@@ -44,7 +45,11 @@ const CartCard = (props: StoredBook) => {
           </Card.Section>
         </Card>
       </Modal>
+    );
+  };
 
+  const renderCard = () => {
+    return (
       <Card shadow="sm" radius="md" padding="lg" visibleFrom="sm">
         <div className="grid grid-cols-12 gap-2 md:px-2">
           <div className="col-span-4">
@@ -100,7 +105,11 @@ const CartCard = (props: StoredBook) => {
           </Group>
         </div>
       </Card>
+    );
+  };
 
+  const renderMobileCard = () => {
+    return (
       <Card shadow="sm" radius="md" padding="xl" hiddenFrom="sm">
         <Card.Section p="md">
           <Group justify="space-between" align="start">
@@ -165,6 +174,14 @@ const CartCard = (props: StoredBook) => {
           </div>
         </Card.Section>
       </Card>
+    );
+  };
+
+  return (
+    <div>
+      {renderModal()}
+      {renderCard()}
+      {renderMobileCard()}
     </div>
   );
 };
